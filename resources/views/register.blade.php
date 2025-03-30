@@ -4,9 +4,7 @@
 @section('content')
     <div class="container">
 
-        @include('includes.messages')
-
-        <form class="mt-5" action="{{ route('register-submit') }}" method="POST">
+        <form class="mt-5" action="{{ route('register') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -26,7 +24,8 @@
                 <label for="repeat-password" class="form-label">Repeat password</label>
                 <input name="repeat-password" type="text" class="form-control" id="repeat-password">
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button aria-describedby="form" type="submit" class="btn btn-success">Submit</button>
+            <div id="form" class="form-text">Already have an account? Try to <a href="{{ route('loginForm') }}">log in</a></div>
         </form>
     </div>
 @endsection

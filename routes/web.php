@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\LoginController;
-use \App\Http\Controllers\RegisterController;
+use \App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('home');
@@ -12,10 +11,13 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('loginForm');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('registerForm');
 
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/login/submit', [LoginController::class, 'submit'])->name('login-submit');
-
-Route::post('/register/submit', [RegisterController::class, 'submit'])->name('register-submit');
+Route::get('/dashboard', function() {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');

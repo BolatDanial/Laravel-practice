@@ -15,7 +15,7 @@
 @endif
 
 @if(session('success'))
-    <div class="alert alert-success mt-5">
+    <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif

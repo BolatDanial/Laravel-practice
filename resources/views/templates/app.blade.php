@@ -12,6 +12,7 @@
 </head>
 <body>
     @include('includes.header')
+    @include('includes.messages')
 
     <div class="container mt-5">
         @yield('content')

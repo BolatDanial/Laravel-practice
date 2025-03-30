@@ -18,8 +18,22 @@
             </form>
 
             <div class="text-end">
-                <a href="{{ route('login') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
-                <a href="{{ route('register') }}"><button type="button" class="btn btn-warning">Sign-up</button></a>
+                @if(Auth::check())
+                    <div class="row">
+                        <div class="col-6">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-danger me-2">Logout</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <a href="{{ route('dashboard') }}"><button type="button" class="btn btn-outline-warning">Profile</button></a>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('loginForm') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                    <a href="{{ route('registerForm') }}"><button type="button" class="btn btn-outline-warning">Sign-up</button></a>
+                @endif
             </div>
         </div>
     </div>
