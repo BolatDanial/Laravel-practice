@@ -23,3 +23,7 @@ Route::get('/dashboard', function() {
 })->middleware('auth')->name('dashboard');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/forum/create', [ForumController::class, 'createTopicForm'])->middleware('auth')->name('createTopicForm');
+Route::post('/forum/create', [ForumController::class, 'createTopic'])->name('createTopic');
+Route::get('/forum/{id}', [ForumController::class, 'forumTopic'])->name('forumTopic');
+
