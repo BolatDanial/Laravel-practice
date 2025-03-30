@@ -1,5 +1,5 @@
 @extends('templates.app')
-@section('title') Welcome @endsection
+@section('title') Login @endsection
 
 @section('content')
 

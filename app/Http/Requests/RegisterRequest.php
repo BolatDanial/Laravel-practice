@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
             "name.required" => "Name is required",
             "email.required" => "Email is required",
             "email.email" => "Invalid email",
-            "email.unique" => "Email already exists",
+            "email.unique" => "Account with this email already exists. Try no login",
             "password.required" => "Password is required",
             "repeat-password.same" => "The passwords do not match."
         ];

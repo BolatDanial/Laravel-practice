@@ -1,5 +1,5 @@
 @extends('templates.app')
-@section('title') Welcome @endsection
+@section('title') Register @endsection
 
 @section('content')
     <div class="container">

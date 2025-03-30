@@ -12,10 +12,14 @@
 </head>
 <body>
     @include('includes.header')
-    @include('includes.messages')
 
-    <div class="container mt-5">
-        @yield('content')
+    <div class="container">
+        <div class="message">
+            @include('includes.messages')
+        </div>
+        <div class="content mt-5">
+            @yield('content')
+        </div>
     </div>
 
     @include('includes.footer')
