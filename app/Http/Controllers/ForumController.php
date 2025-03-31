@@ -14,7 +14,7 @@ class ForumController extends Controller
     }
 
     public function forumTopic($id) {
-        return view('forumTopic', ['topic' => Topic::where('id', $id)->first()]);
+        return view('forumTopic', ['topic' => Topic::with('user')->where('id', $id)->first()]);
     }
 
     public function createTopicForm() {
@@ -34,5 +34,22 @@ class ForumController extends Controller
         $topic->save();
 
         return redirect('/forum')->with('success', 'Topic created');
+    }
+
+    public function deleteTopic($id) {
+        Topic::where('id', $id)->delete();
+        return back()->with('success', 'Topic deleted');
+    }
+
+    public function updateTopic($id, ForumRequest $request) {
+        $topic = Topic::where('id', $id)->first();
+
+        $topic->topic = $request->input('topic');
+        $topic->description = $request->input('description');
+        $topic->content = $request->input('content');
+
+        $topic->save();
+
+        return redirect('profile')->with('success', 'Topic updated');
     }
 }

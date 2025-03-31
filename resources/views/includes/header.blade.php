@@ -27,7 +27,7 @@
                             </form>
                         </div>
                         <div class="col-6">
-                            <a href="{{ route('dashboard') }}"><button type="button" class="btn btn-outline-warning">Profile</button></a>
+                            <a href="{{ route('profile') }}"><button type="button" class="btn btn-outline-warning">Profile</button></a>
                         </div>
                     </div>
                 @else

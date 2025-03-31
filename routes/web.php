@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Topic;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\ForumController;
@@ -18,12 +19,15 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/dashboard', function() {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/create', [ForumController::class, 'createTopicForm'])->middleware('auth')->name('createTopicForm');
-Route::post('/forum/create', [ForumController::class, 'createTopic'])->name('createTopic');
+Route::post('/forum/create', [ForumController::class, 'createTopic'])->middleware('auth')->name('createTopic');
 Route::get('/forum/{id}', [ForumController::class, 'forumTopic'])->name('forumTopic');
+Route::get('/forum/update/{id}', function($id) {
+    return view('updateTopicForm', ['topic' => Topic::where('id', $id)->first()]);
+})->middleware('auth')->name('updateTopicForm');
+Route::put('/forum/update/{id}', [ForumController::class, 'updateTopic'])->middleware('auth')->name('updateTopic');
+Route::delete('/forum/{id}', [ForumController::class, 'deleteTopic'])->middleware('auth')->name('deleteTopic');
 

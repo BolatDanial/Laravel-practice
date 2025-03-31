@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
+use App\Models\Topic;
 
 class AuthController extends Controller
 {
@@ -50,5 +51,9 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('home')->with('success', 'You have been logged out');
+    }
+
+    public function profile() {
+        return view('profile', ['topics' => Topic::where('user_id', Auth::id())->get()]);
     }
 }
