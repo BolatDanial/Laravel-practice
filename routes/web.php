@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Models\Topic;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
@@ -30,4 +31,6 @@ Route::get('/forum/update/{id}', function($id) {
 })->middleware('auth')->name('updateTopicForm');
 Route::put('/forum/update/{id}', [ForumController::class, 'updateTopic'])->middleware('auth')->name('updateTopic');
 Route::delete('/forum/{id}', [ForumController::class, 'deleteTopic'])->middleware('auth')->name('deleteTopic');
+
+Route::post('/comment/create/{id}', [CommentController::class, 'createComment'])->middleware('auth')->name('createComment');
 

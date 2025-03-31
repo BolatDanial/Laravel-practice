@@ -3,11 +3,6 @@
 
 @section('content')
     <div class="row">
-        <div class="col-4">
-            <h1>Update your discussion</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cum eaque eveniet ex impedit labore repellendus repudiandae sequi voluptas? Blanditiis culpa cum dolor eveniet impedit quis vero! Optio, quibusdam.</p>
-        </div>
-
         <div class="col-8">
             <form method="POST" action="{{ route('updateTopic', ['id' => $topic->id]) }}">
                 @csrf
@@ -27,5 +22,10 @@
                 <button type="submit" class="btn btn-success">Update</button>
             </form>
         </div>
+        <div class="col-4">
+            <h1>Update your discussion</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa cum eaque eveniet ex impedit labore repellendus repudiandae sequi voluptas? Blanditiis culpa cum dolor eveniet impedit quis vero! Optio, quibusdam.</p>
+        </div>
+
     </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Topic;
+use App\Models\Comment;
 use App\Http\Requests\ForumRequest;
 
 class ForumController extends Controller
@@ -14,7 +15,9 @@ class ForumController extends Controller
     }
 
     public function forumTopic($id) {
-        return view('forumTopic', ['topic' => Topic::with('user')->where('id', $id)->first()]);
+        $topic = Topic::with('user')->where('id', $id)->first();
+        $comments = Comment::with('user')->where('topic_id', $id)->get();
+        return view('forumTopic', ['topic' => $topic, 'comments' => $comments, 'commentCount' => count($comments)]);
     }
 
     public function createTopicForm() {
