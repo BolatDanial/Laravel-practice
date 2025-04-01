@@ -10,7 +10,6 @@
                 <li><a href="{{ route('home') }}" class="nav-link px-2 text-white">Home</a></li>
                 <li><a href="{{ route('about') }}" class="nav-link px-2 text-white">About</a></li>
                 <li><a href="{{ route('forum') }}" class="nav-link px-2 text-white">Forum</a></li>
-                <li><a href="/faq" class="nav-link px-2 text-white">FAQs</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

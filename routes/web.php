@@ -20,7 +20,10 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::get('/profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
+Route::get('/profile/redaction', [AuthController::class, 'profileRedactionForm'])->middleware('auth')->name('profileRedactionForm');
+Route::put('/profile/redaction', [AuthController::class, 'profileRedaction'])->middleware('auth')->name('profileRedaction');
 
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/create', [ForumController::class, 'createTopicForm'])->middleware('auth')->name('createTopicForm');

@@ -7,6 +7,11 @@
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Your email is {{ Auth::user()->email }}</p>
         </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+            <div class="container px-5">
+                <img src="{{ asset('storage/' . $avatar->path ) }}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="{{  $avatar->name }}" width="700" height="500" loading="lazy">
+            </div>
+        </div>
     </div>
 
     <div class="topics">
